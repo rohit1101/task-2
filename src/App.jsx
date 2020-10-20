@@ -1,10 +1,13 @@
 import React, { Component } from "react"
 import getNewPosts from "./helpers/getNewPosts"
+import { getRelativeTime } from "./helpers/time"
+import uniqueKey from "./helpers/uniqueKey"
 
 class App extends Component {
   state = {
     newStories: [],
     loading: true,
+    searchValue: "",
   }
 
   async componentDidMount() {
@@ -13,29 +16,30 @@ class App extends Component {
     )
     const data = await res.json()
     data.splice(10, 500)
+
     const newStories = await getNewPosts(data)
     this.setState({ newStories: newStories, loading: false })
     console.log(newStories)
   }
 
-  getCleanURL = (url) => {
-    if (url !== undefined) {
-      const optimisedMatcher = new URL(url).hostname
-      return optimisedMatcher
-      // const matcher = url.match(
-      //   /^(?:https?:\/\/)?(?:[^@/\n]+@)?(?:www\.)?([^:/?\n]+)/
-      // )
-      // return matcher[1]
-    }
+  handleSearchInput = (e) => {
+    this.setState({ searchValue: e.target.value })
   }
 
   render() {
     if (this.state.loading) return "loading..."
     return (
       <div>
+        <h1>Hacker News</h1>
+        <input
+          type="text"
+          value={this.state.searchValue}
+          onChange={this.handleSearchInput}
+        />
+
         {this.state.newStories.map((story) => {
           return (
-            <div key={story.id}>
+            <div key={story.id === null ? uniqueKey() : story.id}>
               <h2>
                 <a href={story.url} target="_blank" rel="noopener noreferrer">
                   {story.title}
@@ -51,7 +55,7 @@ class App extends Component {
 
               <p>
                 by {story.by}
-                created at {new Date(story.time).toLocaleTimeString()}
+                created at {getRelativeTime(new Date(story.time))}
               </p>
             </div>
           )
