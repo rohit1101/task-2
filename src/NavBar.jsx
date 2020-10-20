@@ -31,6 +31,8 @@ class NavBar extends React.Component {
           <Link to="/ask">ask</Link>
           {"  "}
           <Link to="/jobs">jobs</Link>
+          {"  "}
+          <Link to="/show">show</Link>
         </div>
       </div>
     )

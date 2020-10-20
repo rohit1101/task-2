@@ -4,29 +4,28 @@ import uniqueKey from "../../helpers/uniqueKey"
 import getCleanURL from "../../helpers/getCleanURL"
 import { getRelativeTime } from "../../helpers/time"
 
-class Ask extends React.Component {
+class Show extends React.Component {
   state = {
-    askStories: [],
+    showStories: [],
     loading: true,
     searchValue: "",
   }
 
   async componentDidMount() {
     const res = await fetch(
-      `https://hacker-news.firebaseio.com/v0/askstories.json?print=pretty`
+      `https://hacker-news.firebaseio.com/v0/showstories.json?print=pretty`
     )
     const data = await res.json()
     data.splice(10, data.length)
-    const askStories = await getNewPosts(data)
-    console.log(askStories)
-    this.setState({ askStories: askStories, loading: false })
+    const showStories = await getNewPosts(data)
+    this.setState({ showStories: showStories, loading: false })
   }
 
   render() {
     if (this.state.loading) return "loading..."
     return (
       <div>
-        {this.state.askStories.map((story) => {
+        {this.state.showStories.map((story) => {
           return (
             <div key={story.id === null ? uniqueKey() : story.id}>
               <h2>
@@ -44,7 +43,7 @@ class Ask extends React.Component {
               <p>type: {story.type}</p>
               <p>
                 by {story.by}
-                created at {getRelativeTime(new Date(story.time))}
+                created at {getRelativeTime(story.time)}
               </p>
             </div>
           )
@@ -54,4 +53,4 @@ class Ask extends React.Component {
   }
 }
 
-export default Ask
+export default Show
