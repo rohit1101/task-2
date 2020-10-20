@@ -6,32 +6,33 @@ import { getRelativeTime } from "../../helpers/time"
 class Kids extends React.Component {
   state = {
     kids: [],
+    question: "",
     loading: true,
     searchValue: "",
   }
 
   async componentDidMount() {
-    console.log(this.props.location.state)
-
-    // const { kids } = kidsStories.kids
-
-    // const kids = await getNewPosts(data)
-    // console.log(kids)
-    // this.setState({ kids: kids, loading: false })
+    const kidsProp = this.props.location.state
+    const { kids } = kidsProp.kids
+    kids.splice(10, kids.length)
+    const kidsStories = await getNewPosts(kids)
+    // console.log(text)
+    this.setState({
+      kids: kidsStories,
+      loading: false,
+      question: kidsProp.kids.text,
+    })
   }
 
   render() {
     if (this.state.loading) return "loading..."
     return (
       <div>
+        <h3>{this.state.question}</h3>
         {this.state.kids.map((story) => {
           return (
             <div key={story.id === null ? uniqueKey() : story.id}>
-              <h2>
-                <a href={story.url} target="_blank" rel="noopener noreferrer">
-                  {story.title}
-                </a>
-              </h2>
+              <h5>{story.text}</h5>
               <p>type: {story.type}</p>
               <p>
                 by {story.by}

@@ -21,9 +21,11 @@ class Ask extends React.Component {
     this.setState({ askStories: askStories, loading: false })
   }
 
-  handleAskClick = (story) => {
-    console.log(story)
-    navigate("/comments", { state: { kids: story.kids } })
+  handleAskClick = async (story) => {
+    console.log(story.kids)
+    if (story.kids !== undefined) {
+      await navigate("/comments", { state: { kids: story } })
+    }
   }
 
   render() {
@@ -43,6 +45,7 @@ class Ask extends React.Component {
                   {story.title}
                 </p>
               </h2>
+              <h5>{story.text}</h5>
               <p>type: {story.type}</p>
               <p>
                 by {story.by}
