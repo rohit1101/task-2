@@ -5,6 +5,7 @@ import NavBar from "./NavBar"
 import Ask from "./Components/Ask/Ask"
 import Job from "./Components/Job/Job"
 import Show from "./Components/Show/Show"
+import Kids from "./Components/Ask/Kids"
 
 function Route() {
   return (
@@ -15,6 +16,7 @@ function Route() {
         <Ask path="/ask" exact />
         <Job path="/jobs" />
         <Show path="/show" />
+        <Kids path="/comments" />
       </Router>
     </>
   )

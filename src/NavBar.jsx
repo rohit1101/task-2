@@ -24,16 +24,13 @@ class NavBar extends React.Component {
         <div>
           <Link to="/">new</Link>
           {"  "}
-          <Link to="/past">past</Link>
-          {"  "}
-          <Link to="/comments">comments</Link>
-          {"  "}
           <Link to="/ask">ask</Link>
           {"  "}
           <Link to="/jobs">jobs</Link>
           {"  "}
           <Link to="/show">show</Link>
         </div>
+        <button>Sign in</button>
       </div>
     )
   }
