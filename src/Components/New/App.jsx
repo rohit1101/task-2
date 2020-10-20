@@ -43,7 +43,14 @@ class App extends Component {
                 }
                 `}
               </h2>
-              <p>type: {story.type}</p>
+              <p>
+                {" "}
+                <span aria-label="emoji" role="img">
+                  {" "}
+                  🔼{" "}
+                </span>{" "}
+                {story.score === undefined ? 0 : story.score}
+              </p>
               <p>
                 by {story.by}
                 created at {getRelativeTime(new Date(story.time))}

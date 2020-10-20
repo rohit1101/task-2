@@ -46,7 +46,14 @@ class Ask extends React.Component {
                 </p>
               </h2>
               <h5>{story.text}</h5>
-              <p>type: {story.type}</p>
+              <p>
+                {" "}
+                <span aria-label="emoji" role="img">
+                  {" "}
+                  🔼{" "}
+                </span>
+                {story.score === undefined ? 0 : story.score}
+              </p>
               <p>
                 by {story.by}
                 created at {getRelativeTime(new Date(story.time))}
