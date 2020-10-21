@@ -2,7 +2,7 @@ import React from "react"
 import getNewPosts from "../../helpers/getNewPosts"
 import uniqueKey from "../../helpers/uniqueKey"
 import { getRelativeTime } from "../../helpers/time"
-import { Link, navigate } from "@reach/router"
+import { navigate } from "@reach/router"
 
 class Ask extends React.Component {
   state = {
@@ -22,7 +22,6 @@ class Ask extends React.Component {
   }
 
   handleAskClick = async (story) => {
-    console.log(story.kids)
     if (story.kids !== undefined) {
       await navigate("/comments", { state: { kids: story } })
     }
@@ -36,16 +35,20 @@ class Ask extends React.Component {
           return (
             <div key={story.id === null ? uniqueKey() : story.id}>
               <h2>
-                <p
-                  style={{ cursor: "pointer" }}
-                  onClick={(e) => {
-                    return this.handleAskClick(story)
-                  }}
-                >
-                  {story.title}
-                </p>
+                <p>{story.title}</p>
               </h2>
               <h5>{story.text}</h5>
+              <p
+                style={{ cursor: "pointer" }}
+                onClick={(e) => {
+                  return this.handleAskClick(story)
+                }}
+              >
+                {" "}
+                {story.kids === undefined
+                  ? "No comments"
+                  : `${story.kids.length} Comments`}
+              </p>
               <p>
                 {" "}
                 <span aria-label="emoji" role="img">

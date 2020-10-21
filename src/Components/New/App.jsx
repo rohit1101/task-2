@@ -3,6 +3,7 @@ import getNewPosts from "../../helpers/getNewPosts"
 import { getRelativeTime } from "../../helpers/time"
 import uniqueKey from "../../helpers/uniqueKey"
 import getCleanURL from "../../helpers/getCleanURL"
+import { navigate } from "@reach/router"
 
 class App extends Component {
   state = {
@@ -22,6 +23,12 @@ class App extends Component {
     data.splice(10, data.length)
     const newStories = await getNewPosts(data)
     this.setState({ newStories: newStories, loading: false })
+  }
+
+  handleCommentClick = async (story) => {
+    if (story.kids !== undefined) {
+      await navigate("/comments", { state: { kids: story } })
+    }
   }
 
   render() {
@@ -50,6 +57,14 @@ class App extends Component {
                   🔼{" "}
                 </span>{" "}
                 {story.score === undefined ? 0 : story.score}
+              </p>
+              <p
+                onClick={() => this.handleCommentClick(story)}
+                style={{ cursor: "pointer" }}
+              >
+                {story.kids === undefined
+                  ? "No comments"
+                  : `${story.kids.length} Comments`}
               </p>
               <p>
                 by {story.by}

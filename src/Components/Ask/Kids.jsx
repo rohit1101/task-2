@@ -16,11 +16,13 @@ class Kids extends React.Component {
     const { kids } = kidsProp.kids
     kids.splice(10, kids.length)
     const kidsStories = await getNewPosts(kids)
-    // console.log(text)
     this.setState({
       kids: kidsStories,
       loading: false,
-      question: kidsProp.kids.text,
+      question:
+        kidsProp.kids.text === undefined
+          ? kidsProp.kids.title
+          : kidsProp.kids.text,
     })
   }
 
