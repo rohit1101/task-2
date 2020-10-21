@@ -2,4 +2,44 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 61rem));
   justify-content: center;
+
+  div {
+    h2 {
+      color: #424242;
+      font-weight: 800;
+    }
+    h2,
+    p {
+      padding: 0.5rem 0;
+    }
+
+    p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #424242;
+    }
+
+    h2,
+    h2 a {
+      transition: 0.5s;
+    }
+
+    h2 a {
+      text-decoration: none;
+      color: black;
+    }
+
+    h2 a:hover {
+      text-decoration: underline;
+      color: #5a5858;
+    }
+  }
+
+  .hits {
+    display: flex;
+
+    p:nth-child(2) {
+      padding: 0.6rem 1rem;
+    }
+  }
 }

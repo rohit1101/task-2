@@ -1,7 +1,7 @@
 import React from "react"
 import getNewPosts from "../../helpers/api"
 import { getRelativeTime, uniqueKey } from "../../helpers/util"
-
+import Loading from "../Loader/Loading"
 class Kids extends React.Component {
   state = {
     kids: [],
@@ -26,7 +26,7 @@ class Kids extends React.Component {
   }
 
   render() {
-    if (this.state.loading) return "loading..."
+    if (this.state.loading) return <Loading />
     return (
       <div>
         <h3>{this.state.question}</h3>
