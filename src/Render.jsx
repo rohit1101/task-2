@@ -1,7 +1,7 @@
 import React from "react"
 import { getRelativeTime, getCleanURL, uniqueKey } from "./helpers/util"
 
-export default function Render({ story }) {
+export default function Render({ story, commentHandler }) {
   return story.map((story) => {
     return (
       <div key={story.id === null ? uniqueKey : story.id}>
@@ -24,10 +24,7 @@ export default function Render({ story }) {
           </span>{" "}
           {story.score === undefined ? 0 : story.score}
         </p>
-        <p
-          onClick={() => this.handleCommentClick(story)}
-          style={{ cursor: "pointer" }}
-        >
+        <p onClick={() => commentHandler(story)} style={{ cursor: "pointer" }}>
           {story.kids === undefined
             ? "No comments"
             : `${story.kids.length} Comments`}

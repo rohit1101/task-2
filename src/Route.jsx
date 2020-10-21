@@ -14,9 +14,9 @@ function Route() {
       <Router>
         <App path="/" exact />
         <Ask path="/ask" exact />
-        <Job path="/jobs" />
-        <Show path="/show" />
-        <Kids path="/comments" />
+        <Job path="/jobs" exact />
+        <Show path="/show" exact />
+        <Kids path="/comments" exact />
       </Router>
     </>
   )

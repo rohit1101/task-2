@@ -24,9 +24,9 @@ class App extends Component {
     this.setState({ newStories: newStories, loading: false })
   }
 
-  handleCommentClick = async (story) => {
+  handleCommentClick(story) {
     if (story.kids !== undefined) {
-      await navigate("/comments", { state: { kids: story } })
+      navigate("/comments", { state: { kids: story } })
     }
   }
 
@@ -59,9 +59,12 @@ class App extends Component {
         />
         <hr />
         {filteredArr.length && filteredArr ? (
-          <Render story={filteredArr} />
+          <Render
+            story={filteredArr}
+            commentHandler={this.handleCommentClick}
+          />
         ) : (
-          <Render story={storyArr} />
+          <Render story={storyArr} commentHandler={this.handleCommentClick} />
         )}
       </div>
     )

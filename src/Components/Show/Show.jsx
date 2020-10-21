@@ -56,9 +56,12 @@ class Show extends React.Component {
         />
         <hr />
         {filteredArr.length && filteredArr ? (
-          <Render story={filteredArr} />
+          <Render
+            story={filteredArr}
+            commentHandler={this.handleCommentClick}
+          />
         ) : (
-          <Render story={storyArr} />
+          <Render story={storyArr} commentHandler={this.handleCommentClick} />
         )}
       </div>
     )
