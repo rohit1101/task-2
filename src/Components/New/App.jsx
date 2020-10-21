@@ -3,6 +3,7 @@ import getNewPosts from "../../helpers/api"
 import { navigate } from "@reach/router"
 import Render from "../../Render"
 import Input from "../Input/Input"
+
 class App extends Component {
   state = {
     newStories: [],
