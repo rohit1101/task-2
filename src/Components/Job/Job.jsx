@@ -1,7 +1,7 @@
 import React from "react"
 import getNewPosts from "../../helpers/api"
 import { navigate } from "@reach/router"
-import Render from "../../Render"
+import Render from "../Render/Render"
 import Input from "../Input/Input"
 
 class Job extends React.Component {

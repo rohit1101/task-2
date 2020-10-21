@@ -1,5 +1,5 @@
 import React from "react"
-import { getRelativeTime, getCleanURL, uniqueKey } from "./helpers/util"
+import { getRelativeTime, getCleanURL, uniqueKey } from "../../helpers/util"
 
 export default function Render({ story, commentHandler }) {
   return story.map((story) => {
