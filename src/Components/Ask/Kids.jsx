@@ -1,5 +1,5 @@
 import React from "react"
-import getNewPosts from "../../helpers/getNewPosts"
+import getNewPosts from "../../helpers/api"
 import uniqueKey from "../../helpers/uniqueKey"
 import { getRelativeTime } from "../../helpers/time"
 

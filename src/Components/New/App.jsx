@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import getNewPosts from "../../helpers/getNewPosts"
+import getNewPosts from "../../helpers/api"
 import { navigate } from "@reach/router"
 import Render from "../../Render"
 
