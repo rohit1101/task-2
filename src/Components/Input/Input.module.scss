@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  input {
+    width: 30%;
+    outline: none;
+    padding: 0.5rem 0.5rem;
+  }
+}
+
+.wrap {
+  hr {
+    margin: 2rem 0;
+  }
+}
