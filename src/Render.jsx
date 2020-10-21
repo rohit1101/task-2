@@ -1,7 +1,5 @@
 import React from "react"
-import uniqueKey from "./helpers/uniqueKey"
-import getCleanURL from "./helpers/getCleanURL"
-import { getRelativeTime } from "./helpers/time"
+import { getRelativeTime, getCleanURL, uniqueKey } from "./helpers/util"
 
 export default function Render({ story }) {
   return story.map((story) => {

@@ -1,7 +1,6 @@
 import React from "react"
 import getNewPosts from "../../helpers/api"
-import uniqueKey from "../../helpers/uniqueKey"
-import { getRelativeTime } from "../../helpers/time"
+import { getRelativeTime, uniqueKey } from "../../helpers/util"
 
 class Kids extends React.Component {
   state = {
