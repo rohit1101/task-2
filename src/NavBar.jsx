@@ -6,21 +6,11 @@ class NavBar extends React.Component {
     searchValue: "",
   }
 
-  handleSearchInput = (e) => {
-    this.setState({ searchValue: e.target.value })
-  }
-
   render() {
     return (
       <div>
         <h1>Hacker News</h1>
-        <input
-          type="text"
-          value={this.state.searchValue}
-          onChange={this.handleSearchInput}
-          placeholder="&#x1F50D; Search"
-        />
-        <hr />
+
         <div>
           <Link to="/">new</Link>
           {"  "}

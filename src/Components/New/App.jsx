@@ -31,10 +31,21 @@ class App extends Component {
     }
   }
 
+  handleSearchInput = (e) => {
+    this.setState({ searchValue: e.target.value })
+  }
+
   render() {
     if (this.state.loading) return "loading..."
     return (
       <div>
+        <input
+          type="text"
+          value={this.state.searchValue}
+          onChange={this.handleSearchInput}
+          placeholder="&#x1F50D; Search"
+        />
+        <hr />
         {this.state.newStories.map((story) => {
           return (
             <div key={story.id === null ? uniqueKey() : story.id}>
