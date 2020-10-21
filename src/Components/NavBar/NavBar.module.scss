@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.container {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: space-around;
+
+  div:nth-child(1) {
+    margin: 1rem 1rem;
+    padding: 0.5rem 0;
+  }
+
+  div:nth-child(2) {
+    .link {
+      background-color: orange;
+      display: inline-block;
+      text-align: center;
+      color: black;
+      text-decoration: none;
+      margin: 1.5rem 1rem;
+      padding: 0.5rem 2rem;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+  }
+}
