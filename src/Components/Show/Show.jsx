@@ -2,6 +2,7 @@ import React from "react"
 import getNewPosts from "../../helpers/api"
 import { navigate } from "@reach/router"
 import Render from "../../Render"
+import Input from "../../Input"
 
 class Show extends React.Component {
   state = {
@@ -48,13 +49,10 @@ class Show extends React.Component {
     const filteredArr = this.state.filteredStories
     return (
       <div>
-        <input
-          type="text"
-          value={this.state.searchValue}
-          onChange={this.handleSearchInput}
-          placeholder="&#x1F50D; Search"
+        <Input
+          search={this.state.searchValue}
+          searchHandler={this.handleSearchInput}
         />
-        <hr />
         {filteredArr.length && filteredArr ? (
           <Render
             story={filteredArr}
