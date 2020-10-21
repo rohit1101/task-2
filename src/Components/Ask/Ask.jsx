@@ -3,6 +3,7 @@ import getNewPosts from "../../helpers/api"
 import { navigate } from "@reach/router"
 import Render from "../Render/Render"
 import Input from "../Input/Input"
+import Loading from "../Loader/Loading"
 
 class Ask extends React.Component {
   state = {
@@ -46,7 +47,7 @@ class Ask extends React.Component {
   render() {
     const storyArr = this.state.askStories
     const filteredArr = this.state.filteredStories
-    if (this.state.loading) return "loading..."
+    if (this.state.loading) return <Loading />
     return (
       <div>
         <Input
