@@ -2,7 +2,7 @@ import React from "react"
 import getNewPosts from "../../helpers/api"
 import { navigate } from "@reach/router"
 import Render from "../../Render"
-import Input from "../../Input"
+import Input from "../Input/Input"
 
 class Ask extends React.Component {
   state = {

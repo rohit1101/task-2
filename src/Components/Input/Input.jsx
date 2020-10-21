@@ -9,6 +9,7 @@ function Input({ search, searchHandler }) {
         onChange={searchHandler}
         placeholder="&#x1F50D; Search"
       />
+      <button>Sign In</button>
       <hr />
     </div>
   )
