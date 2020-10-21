@@ -8,6 +8,15 @@
   div:nth-child(1) {
     margin: 1rem 1rem;
     padding: 0.5rem 0;
+
+    h1 {
+      border-left: 5px solid #cfcccc;
+      padding-left: 5px;
+      transition: 0.5s;
+    }
+    h1:hover {
+      border-left: 5px solid #f8bf96;
+    }
   }
 
   div:nth-child(2) {

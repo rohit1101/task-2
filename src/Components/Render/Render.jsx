@@ -1,38 +1,50 @@
 import React from "react"
 import { getRelativeTime, getCleanURL, uniqueKey } from "../../helpers/util"
-
+import styles from "./Render.module.scss"
 export default function Render({ story, commentHandler }) {
   return story.map((story) => {
     return (
-      <div key={story.id === null ? uniqueKey : story.id}>
-        <h2>
-          <a href={story.url} target="_blank" rel="noopener noreferrer">
-            {story.title}
-          </a>
-          {"  "}
-          {`${
-            getCleanURL(story.url) === undefined
-              ? ""
-              : `(${getCleanURL(story.url)})`
-          })`}
-        </h2>
-        <p>
-          {" "}
-          <span aria-label="emoji" role="img">
+      <div className={styles.container}>
+        <div
+          className={styles.children}
+          key={story.id === null ? uniqueKey : story.id}
+        >
+          <div>
+            <h2>
+              <a href={story.url} target="_blank" rel="noopener noreferrer">
+                {story.title}
+              </a>
+              {"  "}
+              {`${
+                getCleanURL(story.url) === undefined
+                  ? ""
+                  : `(${getCleanURL(story.url)}`
+              })`}
+            </h2>
+          </div>
+
+          <p>
             {" "}
-            🔼{" "}
-          </span>{" "}
-          {story.score === undefined ? 0 : story.score}
-        </p>
-        <p onClick={() => commentHandler(story)} style={{ cursor: "pointer" }}>
-          {story.kids === undefined
-            ? "No comments"
-            : `${story.kids.length} Comments`}
-        </p>
-        <p>
-          by {story.by}
-          created at {getRelativeTime(story.time)}
-        </p>
+            <span aria-label="emoji" role="img">
+              {" "}
+              🔼{" "}
+            </span>{" "}
+            {story.score === undefined ? 0 : story.score}
+          </p>
+          <p
+            onClick={() => commentHandler(story)}
+            style={{ cursor: "pointer" }}
+          >
+            {story.kids === undefined
+              ? "No comments"
+              : `${story.kids.length} Comments`}
+          </p>
+
+          <p>
+            by {story.by}
+            created at {getRelativeTime(story.time)}
+          </p>
+        </div>
       </div>
     )
   })
