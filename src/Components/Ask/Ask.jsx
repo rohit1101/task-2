@@ -1,12 +1,12 @@
 import React from "react"
 import getNewPosts from "../../helpers/getNewPosts"
-import uniqueKey from "../../helpers/uniqueKey"
-import { getRelativeTime } from "../../helpers/time"
 import { navigate } from "@reach/router"
+import Render from "../../Render"
 
 class Ask extends React.Component {
   state = {
     askStories: [],
+    filteredStories: [],
     loading: true,
     searchValue: "",
   }
@@ -28,10 +28,23 @@ class Ask extends React.Component {
   }
 
   handleSearchInput = (e) => {
-    this.setState({ searchValue: e.target.value })
+    const searchValue = e.target.value
+    const filterStories = [...this.state.askStories]
+    if (searchValue !== " ") {
+      this.setState({ searchValue: searchValue })
+      const filteredStories = filterStories.filter((item) => {
+        return item.title.toLowerCase().includes(searchValue.toLowerCase())
+      })
+      this.setState({ filteredStories: filteredStories })
+    }
+    if (searchValue === "") {
+      this.setState({ filteredStories: [] })
+    }
   }
 
   render() {
+    const storyArr = this.state.askStories
+    const filteredArr = this.state.filteredStories
     if (this.state.loading) return "loading..."
     return (
       <div>
@@ -42,39 +55,11 @@ class Ask extends React.Component {
           placeholder="&#x1F50D; Search"
         />
         <hr />
-        {this.state.askStories.map((story) => {
-          return (
-            <div key={story.id === null ? uniqueKey() : story.id}>
-              <h2>
-                <p>{story.title}</p>
-              </h2>
-              <h5>{story.text}</h5>
-              <p
-                style={{ cursor: "pointer" }}
-                onClick={(e) => {
-                  return this.handleAskClick(story)
-                }}
-              >
-                {" "}
-                {story.kids === undefined
-                  ? "No comments"
-                  : `${story.kids.length} Comments`}
-              </p>
-              <p>
-                {" "}
-                <span aria-label="emoji" role="img">
-                  {" "}
-                  🔼{" "}
-                </span>
-                {story.score === undefined ? 0 : story.score}
-              </p>
-              <p>
-                by {story.by}
-                created at {getRelativeTime(new Date(story.time))}
-              </p>
-            </div>
-          )
-        })}
+        {filteredArr.length && filteredArr ? (
+          <Render story={filteredArr} />
+        ) : (
+          <Render story={storyArr} />
+        )}
       </div>
     )
   }

@@ -1,13 +1,12 @@
 import React, { Component } from "react"
 import getNewPosts from "../../helpers/getNewPosts"
-import { getRelativeTime } from "../../helpers/time"
-import uniqueKey from "../../helpers/uniqueKey"
-import getCleanURL from "../../helpers/getCleanURL"
 import { navigate } from "@reach/router"
+import Render from "../../Render"
 
 class App extends Component {
   state = {
     newStories: [],
+    filteredStories: [],
     loading: true,
     searchValue: "",
   }
@@ -32,10 +31,23 @@ class App extends Component {
   }
 
   handleSearchInput = (e) => {
-    this.setState({ searchValue: e.target.value })
+    const searchValue = e.target.value
+    const filterStories = [...this.state.newStories]
+    if (searchValue !== " ") {
+      this.setState({ searchValue: searchValue })
+      const filteredStories = filterStories.filter((item) => {
+        return item.title.toLowerCase().includes(searchValue.toLowerCase())
+      })
+      this.setState({ filteredStories: filteredStories })
+    }
+    if (searchValue === "") {
+      this.setState({ filteredStories: [] })
+    }
   }
 
   render() {
+    const storyArr = this.state.newStories
+    const filteredArr = this.state.filteredStories
     if (this.state.loading) return "loading..."
     return (
       <div>
@@ -46,44 +58,11 @@ class App extends Component {
           placeholder="&#x1F50D; Search"
         />
         <hr />
-        {this.state.newStories.map((story) => {
-          return (
-            <div key={story.id === null ? uniqueKey() : story.id}>
-              <h2>
-                <a href={story.url} target="_blank" rel="noopener noreferrer">
-                  {story.title}
-                </a>
-                {"  "}
-                {`${
-                  getCleanURL(story.url) === undefined
-                    ? ""
-                    : `(${getCleanURL(story.url)})`
-                }
-                `}
-              </h2>
-              <p>
-                {" "}
-                <span aria-label="emoji" role="img">
-                  {" "}
-                  🔼{" "}
-                </span>{" "}
-                {story.score === undefined ? 0 : story.score}
-              </p>
-              <p
-                onClick={() => this.handleCommentClick(story)}
-                style={{ cursor: "pointer" }}
-              >
-                {story.kids === undefined
-                  ? "No comments"
-                  : `${story.kids.length} Comments`}
-              </p>
-              <p>
-                by {story.by}
-                created at {getRelativeTime(new Date(story.time))}
-              </p>
-            </div>
-          )
-        })}
+        {filteredArr.length && filteredArr ? (
+          <Render story={filteredArr} />
+        ) : (
+          <Render story={storyArr} />
+        )}
       </div>
     )
   }
