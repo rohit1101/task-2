@@ -3,7 +3,7 @@
 .container {
   font-family: "Playfair Display", serif;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   div:nth-child(1) {
     margin: 1rem 1rem;
@@ -15,7 +15,7 @@
       transition: 0.5s;
     }
     h1:hover {
-      border-left: 5px solid #f8bf96;
+      border-left: 5px solid #fce8c7;
     }
   }
 

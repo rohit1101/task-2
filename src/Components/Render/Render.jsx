@@ -8,8 +8,8 @@ export default function Render({ story, commentHandler }) {
         className={styles.container}
         key={story.id === null ? uniqueKey : story.id}
       >
-        <div>
-          <h2>
+        <div className={styles.content}>
+          <h2 className={styles.title}>
             <a href={story.url} target="_blank" rel="noopener noreferrer">
               {story.title}
             </a>
@@ -24,8 +24,7 @@ export default function Render({ story, commentHandler }) {
             by {story.by}
             created at {getRelativeTime(story.time)}
           </p>
-        </div>
-        <div className={styles.hits}>
+
           <p>
             {" "}
             <span aria-label="emoji" role="img">
