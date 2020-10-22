@@ -4,9 +4,21 @@
   justify-content: center;
 
   input {
-    width: 30%;
+    width: 60%;
     outline: none;
+    border: none;
+    text-align: center;
+    background-color: #d3d0d0;
+    color: #4b4a4a;
     padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  input::placeholder {
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+    background-color: #d3d0d0;
+    color: #4b4a4a;
   }
 }
 
