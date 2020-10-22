@@ -7,8 +7,8 @@
   flex-wrap: wrap;
 
   .content {
+    padding: 1rem 1rem;
     margin: 1rem 0;
-    padding: 1rem 0;
     width: 60%;
 
     .title {
@@ -26,37 +26,25 @@
       text-decoration: underline;
       color: #5a5858;
     }
+
+    .time {
+      font-size: 1.2rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      color: #807e7e;
+    }
+
+    .reactions {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  .content:hover {
+    transition: 0.5s;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 0px 7px 3px rgba(51, 29, 0, 0.3);
+    background-color: #fce8c7;
+    color: #e06f1f;
   }
 }
-
-// div {
-
-//   p {
-//     font-size: 1.2rem;
-//     font-weight: 400;
-//     color: #424242;
-//   }
-
-//   h2,
-//   h2 a {
-//     transition: 0.5s;
-//   }
-
-//   h2 a {
-//     text-decoration: none;
-//     color: black;
-//   }
-
-//   h2 a:hover {
-//     text-decoration: underline;
-//     color: #5a5858;
-//   }
-// }
-
-// .hits {
-//   display: flex;
-
-//   p:nth-child(2) {
-//     padding: 0.6rem 1rem;
-//   }
-// }

@@ -20,28 +20,30 @@ export default function Render({ story, commentHandler }) {
                 : `(${getCleanURL(story.url)}`
             })`}
           </h2>
-          <p>
+          <p className={styles.time}>
             by {story.by}
             created at {getRelativeTime(story.time)}
           </p>
 
-          <p>
-            {" "}
-            <span aria-label="emoji" role="img">
+          <div className={styles.reactions}>
+            <p>
               {" "}
-              🔼{" "}
-            </span>{" "}
-            {story.score === undefined ? 0 : story.score}
-          </p>
+              <span aria-label="emoji" role="img">
+                {" "}
+                🔼{" "}
+              </span>{" "}
+              {story.score === undefined ? 0 : story.score}
+            </p>
 
-          <p
-            onClick={() => commentHandler(story)}
-            style={{ cursor: "pointer" }}
-          >
-            {story.kids === undefined
-              ? "No comments"
-              : `${story.kids.length} Comments`}
-          </p>
+            <p
+              onClick={() => commentHandler(story)}
+              style={{ cursor: "pointer" }}
+            >
+              {story.kids === undefined
+                ? "No comments"
+                : `${story.kids.length} Comments`}
+            </p>
+          </div>
         </div>
       </div>
     )
