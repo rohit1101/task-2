@@ -2,6 +2,7 @@ import React from "react"
 import getNewPosts from "../../helpers/api"
 import { getRelativeTime, uniqueKey } from "../../helpers/util"
 import Loading from "../Loader/Loading"
+import styles from "./Kids.module.scss"
 class Kids extends React.Component {
   state = {
     kids: [],
@@ -28,7 +29,7 @@ class Kids extends React.Component {
   render() {
     if (this.state.loading) return <Loading />
     return (
-      <div>
+      <div className={styles.container}>
         <h3>{this.state.question}</h3>
         {this.state.kids.map((story) => {
           return (
