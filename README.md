@@ -1,1 +1,1 @@
-## Hacker News Beta Version
+# Hacker News Clone
