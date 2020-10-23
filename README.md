@@ -14,3 +14,5 @@
   [Dribble Design](https://dribbble.com/shots/11208714-Hackernews-UI-Redesign)
 
 ## Project Screenshot 
+
+* [Landing Page Screenshot](https://hackernews-ss.s3.amazonaws.com/SS-1.jpg)
