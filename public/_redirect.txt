@@ -1,1 +1,1 @@
-/* /ask /jobs /show 
+/* /ask /jobs /show /comments 
