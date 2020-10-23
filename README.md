@@ -61,3 +61,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## What did I learn ?
+
+This project was built within span of *2 days*. Project goals included using technologies learned up until this point and familiarizing myself with documentation for new features.
+
+One of the main challenges I ran into was structuring the files and folders in the application. 
+Due to project time constraints, I did not implement the following:
+* User Authentication.
+* Fully Responsive Design.
+
+At the end of the day, the technologies implemented in this project are React, Reach-Router v1.3.4, VanillaJS, SCSS and CSS. I chose to use the create-react-app boilerplate to minimize initial setup and invest more time in building the project.
+
