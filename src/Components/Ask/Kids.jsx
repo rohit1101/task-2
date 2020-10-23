@@ -30,26 +30,34 @@ class Kids extends React.Component {
     if (this.state.loading) return <Loading />
     return (
       <div className={styles.container}>
-        <h3>{this.state.question}</h3>
-        {this.state.kids.map((story) => {
-          return (
-            <div key={story.id === null ? uniqueKey() : story.id}>
-              <h5>{story.text}</h5>
-              <p>
-                {" "}
-                <span aria-label="emoji" role="img">
-                  {" "}
-                  🔼{" "}
-                </span>{" "}
-                {story.score === undefined ? 0 : story.score}
-              </p>
-              <p>
-                by {story.by}
-                created at {getRelativeTime(new Date(story.time))}
-              </p>
-            </div>
-          )
-        })}
+        <div className={styles.content}>
+          <h3>{this.state.question}</h3>
+          {this.state.kids.map((story) => {
+            return (
+              <div
+                className={styles.child}
+                key={story.id === null ? uniqueKey() : story.id}
+              >
+                <h5>{story.text}</h5>
+
+                <div className={styles.reactions}>
+                  <p>
+                    {" "}
+                    <span aria-label="emoji" role="img">
+                      {" "}
+                      🔼{" "}
+                    </span>{" "}
+                    {story.score === undefined ? 0 : story.score}
+                  </p>
+                  <p>
+                    by {story.by}
+                    created at {getRelativeTime(new Date(story.time))}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     )
   }
