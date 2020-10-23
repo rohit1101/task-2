@@ -1,1 +1,5 @@
-/* /ask /jobs /show /comments 
+/index.html /ask 301
+/index.html /jobs 301
+/index.html /show 301
+/index.html /comments 301
+/index.html / 301
